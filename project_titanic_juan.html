@@ -11775,7 +11775,7 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 style="text-align: center;">Projeto de Análise de Dados - Titanic</h1>
+<h1 style="text-align: center;">RMS Titanic <i>"O Inafundável"</i></h1>
 </div>
 </div>
 </div>
@@ -11783,7 +11783,8 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Esse projeto é referente a análise de dados dos passageiros do naufrágio do navio Titanic. A ideia aqui é através da analise desses dados respordermos algumas perguntas referentes ao naufrágio.</p>
+<p>O RMS Titanic foi um navio de passageiros britânico operado pela White Star Line e construído pelos estaleiros da Harland and Wolff em Belfast, ele foi lançado ao mar em maio de 1911. O Titanic foi pensado para ser o navio mais luxuoso e mais seguro de sua época, gerando lendas que era supostamente "inafundável".
+ Ele colidiu com um iceberg às 23h40min do dia 14 de abril e afundou na madrugada do dia seguinte, estimasse que haviam 2208 passageiros/tripulantes na embarcação, sendo um dos maiores desastres marítimos em tempos de paz de toda a história. Seu naufrágio destacou vários pontos fracos de seu projeto, deficiências nos procedimentos de evacuação de emergência e falhas nas regulamentações marítimas da época. O dataset em questão possui alguns dados desses passageiros.</p>
 
 </div>
 </div>
@@ -11796,9 +11797,53 @@ div#notebook {
 </div>
 </div>
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><h2>Origem da base de dados</h2></p>
+<p>Essa base de dados faz parte do projeto final do Nanodegree de Fundamentos de Data Science I da Udacity, o consjunto de dados tem sua origem no site da Kaggle, possuimos aqui o total de 891 amostras dos 2208 passageiros. Com base nas informações dessa base de dados, irei levantar questionamentos e responde-los</p><ul style="list-style: none;">
+  <li>https://www.kaggle.com/c/titanic </li>
+  <li>https://pt.wikipedia.org/wiki/RMS_Titanic</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><h2> Vamos as perguntas!!</h2></p>
+<ul style="list-style: none;">
+  <li> Quantos passageiros viajaram por porto?</li>
+  <li> Quantas pessoas tinham a bordo e quantas sobreviveram?</li>
+  <li> Quantas mulheres e homens sobreviveram ao naufrágio?</li>
+  <li> Qual classe que estes sobreviventes estavam?</li>
+  <li> Quantas mulheres haviam a bordo do navio?</li>
+  <li> Quantos homens haviam a bordo do navio?</li>
+  <li> Qual a média das idades das mulheres?</li>
+  <li> Qual a média das idades dos homens?</li>
+  <li> Qual a porcentagem de sobreviventes? </li>
+  <li> Qual classe que os sobreviventes do sexo masculino estavam?</li>
+  <li> Qual classe que os sobreviventes do sexo feminino estavam?</li>
+  <li> Qual a faixa de idade dos sobreviventes?</li>
+  <li> Qual o porto de embarque dos sobreviventes?</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Vamos importar as bibliotecas necessárias e carregar o arquivo csv e investigar os dados</p>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#-&gt; Importando bibliotecas necessárias e carregando o arquivo de dados.</span>
@@ -11824,7 +11869,7 @@ div#notebook {
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[3]:</div>
+<div class="prompt output_prompt">Out[1]:</div>
 
 
 
@@ -11950,7 +11995,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Avaliando os dados</span>
@@ -11998,12 +12043,19 @@ memory usage: 83.6+ KB
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#numero de amostras  (linhas e colunas)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;O arquivo possui </span><span class="si">{0}</span><span class="s2"> amostras e </span><span class="si">{1}</span><span class="s2"> colunas&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-        <span class="n">df_t</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">df_t</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="p">))</span>
+<span class="k">def</span> <span class="nf">amostras</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Mostra os valores de amostras e colunas do arquivo</span>
+<span class="sd">      Argumentos:</span>
+<span class="sd">          df: Lista/base de dados.</span>
+<span class="sd">      Retorna:</span>
+<span class="sd">          Um print informando os valores de amostras e colunas do arquivo.&quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;O arquivo possui </span><span class="si">{0}</span><span class="s2"> amostras e </span><span class="si">{1}</span><span class="s2"> colunas&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+        <span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="p">))</span>
+<span class="n">amostras</span><span class="p">(</span><span class="n">df_t</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -12031,7 +12083,7 @@ memory usage: 83.6+ KB
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Colunas com valores faltantes</span>
@@ -12066,7 +12118,7 @@ memory usage: 83.6+ KB
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#linhas duplicadas</span>
@@ -12099,7 +12151,7 @@ memory usage: 83.6+ KB
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Melhorando o indice da coluna (utilizando o PassengerId como indice)</span>
@@ -12117,7 +12169,7 @@ memory usage: 83.6+ KB
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[8]:</div>
+<div class="prompt output_prompt">Out[6]:</div>
 
 
 
@@ -12251,12 +12303,11 @@ memory usage: 83.6+ KB
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Verificando a quantidade de colunas agora.</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;O arquivo possui </span><span class="si">{0}</span><span class="s2"> colunas&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-       <span class="n">df_t</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="p">))</span>
+<span class="n">amostras</span><span class="p">(</span><span class="n">df_t</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -12273,7 +12324,7 @@ memory usage: 83.6+ KB
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>O arquivo possui 11 colunas
+<pre>O arquivo possui 891 amostras e 11 colunas
 </pre>
 </div>
 </div>
@@ -12284,7 +12335,7 @@ memory usage: 83.6+ KB
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Verificando a quantidade de valores unicos em cada coluna</span>
@@ -12301,7 +12352,7 @@ memory usage: 83.6+ KB
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[10]:</div>
+<div class="prompt output_prompt">Out[8]:</div>
 
 
 
@@ -12331,14 +12382,22 @@ dtype: int64</pre>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Limpeza dos dados</p>
+<p>Agora que já conhecemos os nossos dados vamos a próxima etapa.</p>
 
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2>Limpeza dos dados</h2>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Usando a média para prencher os valores faltantes na idade</span>
@@ -12375,7 +12434,7 @@ dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Deixando todos os rótulos em letras minusculas</span>
@@ -12395,7 +12454,7 @@ dtype: int64</pre>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[12]:</div>
+<div class="prompt output_prompt">Out[10]:</div>
 
 
 
@@ -12473,7 +12532,7 @@ dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Verificando a relação da 3ª Classe com o número da Cabine</span>
@@ -12513,11 +12572,10 @@ Total de Cabines nulas da Classe 3: 479
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Preenchendo valores ausentes automaticamente-Colunas Cabin - Embarked</span>
-<span class="n">df_t</span><span class="p">[</span><span class="s1">&#39;cabin&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="s1">&#39;Sem Cabine&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Preenchendo valores ausentes automaticamente-Coluna Embarked</span>
 <span class="n">df_t</span><span class="p">[</span><span class="s1">&#39;embarked&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="s1">&#39;N&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># N = Sem porto de embarcação</span>
 
 <span class="c1">#Confirmando as mudanças nas colunas com valores faltantes</span>
@@ -12540,7 +12598,7 @@ Total de Cabines nulas da Classe 3: 479
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Colunas com valores Faltantes: 
- [] 
+ [&#39;cabin&#39;] 
 
 </pre>
 </div>
@@ -12554,7 +12612,22 @@ Total de Cabines nulas da Classe 3: 479
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Agora vamos as perguntas!!!!!</p>
+<p><h3> Resumo - Limpeza de Dados</h3></p>
+<ul style="list-style= none">
+  <li> Após ter carregado e identificado os valores/variaveis do dataset podemos perceber que as variaveis 'Age', 'Cabin' e 'Embarked' estavam ausentes</li>
+  <li> Para a variavel 'Age' utilizamos a média para completar as variaveis faltantes</li>
+  <li> Para a variavel 'Cabin' como ela não tinha muita influência na nossa analise/investigação preenchemos as colunas ausentes com o valor Sem Cabine que não interferiu na nossa investigação</li>
+  <li> O mesmo fizemos com a variavel 'Embarked' como só tinha dois valores nulos, que a falta deles não seria um grande problema para a nossa investigação, preenchemos os valores ausentes com o valor N</li>
+  <li> Por último confirmamos que não existia mais nenhum valor nulo</li>
+ </ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><i>Agora vamos em buscas das nossas respostas!!!  </i></p>
 
 </div>
 </div>
@@ -12571,14 +12644,14 @@ Total de Cabines nulas da Classe 3: 479
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Qual a porcentagem de sobreviventes?</strong></p>
+<p><strong> Vamos descobrir a quantidade de sobreviventes!</strong></p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[50]:</div>
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Buscando o total de sobreviventes</span>
@@ -12617,7 +12690,7 @@ Total de mortos: 549
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[53]:</div>
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">labels</span> <span class="o">=</span> <span class="s1">&#39;Sobreviventes&#39;</span><span class="p">,</span> <span class="s1">&#39;Mortos&#39;</span>
@@ -12665,16 +12738,7 @@ Total de mortos: 549
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Conclusão</strong> - Ao todo tivemos 38,4% de sobreviventes.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Teve mais sobreviventes do sexo masculino ou feminino?</strong></p>
+<p><strong>Vamos investigar os sobreviventes por sexo!</strong></p>
 
 </div>
 </div>
@@ -12682,6 +12746,43 @@ Total de mortos: 549
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Buscando a quantidade de passageiros por sexo</span>
+<span class="n">male</span> <span class="o">=</span> <span class="n">df_t</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;sex == &#39;male&#39;&quot;</span><span class="p">)</span>
+<span class="n">female</span> <span class="o">=</span> <span class="n">df_t</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;sex == &#39;female&#39;&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Total de passageiros masculino: </span><span class="si">{0}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">male</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Total de passageiros feminino: </span><span class="si">{0}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">female</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Total de passageiros masculino: 577
+Total de passageiros feminino: 314
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Buscando a quantidade de sobreviventes, total masculino e total feminino</span>
@@ -12708,8 +12809,7 @@ Total de mortos: 549
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Total de sobreviventes: 342
-Total de Homens sobreviventes: 109
+<pre>Total de Homens sobreviventes: 109
 Total de Mulheres sobreviventes: 233
 </pre>
 </div>
@@ -12721,7 +12821,7 @@ Total de Mulheres sobreviventes: 233
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">locations</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
@@ -12765,23 +12865,14 @@ Total de Mulheres sobreviventes: 233
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Conclusão</strong> - Podemos perceber que a grande maioria dos sobreviventes foram do sexo feminino.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Relação entre a Classe (1ª, 2ª, 3ª),  Sexo e Sobrevivência dos passageiros do Titanic. Qual será a classe que teve mais sobreviventes? </strong></p>
+<p><strong>Vamos investigar agora as Classes para descobrirmos sobre os sobreviventes de cada classe </strong></p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="prompt input_prompt">In&nbsp;[18]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Buscando a quantidade de sobreviventes - totais por classe - fazendo a relação também com o sexo</span>
@@ -12832,7 +12923,7 @@ Total de sobreviventes da 3ª Classe: 119 - Total Masculino: 47 - Total Feminino
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[18]:</div>
+<div class="prompt input_prompt">In&nbsp;[19]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib.ticker</span> <span class="k">import</span> <span class="n">MaxNLocator</span>
@@ -12902,7 +12993,7 @@ Total de sobreviventes da 3ª Classe: 119 - Total Masculino: 47 - Total Feminino
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[19]:</div>
+<div class="prompt input_prompt">In&nbsp;[20]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">labels</span> <span class="o">=</span> <span class="s1">&#39;1ª Classe&#39;</span><span class="p">,</span> <span class="s1">&#39;2ª Classe&#39;</span><span class="p">,</span> <span class="s1">&#39;3ª Classe&#39;</span>
@@ -12950,23 +13041,51 @@ Total de sobreviventes da 3ª Classe: 119 - Total Masculino: 47 - Total Feminino
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong> Conclusão</strong> - Podemos perceber através dessa analise que em todas as classes o maior número de sobreviventes foram do sexo feminino. A classe que obteve maior número de sobreviventes foi a 1º Classe obtendo uma taxa de sobrevivência de 39,8%, enquanto a 2ª classe obteve uma taxa de 25,4% e a 3ª classe obteve uma taxa de 34,8%.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Qual será a faixa etaria que teve mais sobreviventes?</strong></p>
+<p><strong>Vamos investigar as idades dos sobreviventes!!!!</strong></p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[44]:</div>
+<div class="prompt input_prompt">In&nbsp;[21]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Descobrindo a media de idade das mulheres e dos homens a bordo</span>
+<span class="n">mean_male</span> <span class="o">=</span> <span class="n">male</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">mean_female</span> <span class="o">=</span> <span class="n">female</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Media de idade das mulheres a bordo: </span><span class="si">{0}</span><span class="s2"> anos&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">mean_female</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Media de idade dos homens a bordo: </span><span class="si">{0}</span><span class="s2"> anos&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">mean_male</span><span class="p">)))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Media de idade das mulheres a bordo: 28 anos
+Media de idade dos homens a bordo: 30 anos
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[22]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Encontrando as pessoas por faixa etaria </span>
@@ -13009,7 +13128,7 @@ Total de sobreviventes idosos (acima de 50 anos): 22 sobreviventes
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[47]:</div>
+<div class="prompt input_prompt">In&nbsp;[23]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">locations</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>
@@ -13031,7 +13150,7 @@ Total de sobreviventes idosos (acima de 50 anos): 22 sobreviventes
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[47]:</div>
+<div class="prompt output_prompt">Out[23]:</div>
 
 
 
@@ -13063,7 +13182,7 @@ Total de sobreviventes idosos (acima de 50 anos): 22 sobreviventes
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[48]:</div>
+<div class="prompt input_prompt">In&nbsp;[24]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">labels</span> <span class="o">=</span> <span class="s1">&#39;Crianças&#39;</span><span class="p">,</span> <span class="s1">&#39;Jovens&#39;</span><span class="p">,</span> <span class="s1">&#39;Adultos&#39;</span><span class="p">,</span> <span class="s1">&#39;Idosos&#39;</span>
@@ -13109,10 +13228,77 @@ Total de sobreviventes idosos (acima de 50 anos): 22 sobreviventes
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[49]:</div>
+<div class="prompt input_prompt">In&nbsp;[25]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_t</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;scatter&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;survived&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Verificação de sobreviventes/mortos&#39;</span><span class="p">)</span>  
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span> <span class="p">(</span><span class="s1">&#39;Idade&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Sobreviventes = 1.0 / Mortos = 0.0&#39;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[25]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>Text(0,0.5,&#39;Sobreviventes = 1.0 / Mortos = 0.0&#39;)</pre>
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea ">
+<img src="data:image/png;base64,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
+"
+>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Vamos descobrir onde os sobreviventes embarcaram </strong></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[26]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Encontrando a quantidade de pessoas que embarcaram em cada porto</span>
+<span class="n">cherboorg</span> <span class="o">=</span> <span class="n">df_t</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;embarked == &quot;C&quot;&#39;</span><span class="p">)</span>
+<span class="n">queenstown</span> <span class="o">=</span> <span class="n">df_t</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;embarked == &quot;Q&quot;&#39;</span><span class="p">)</span>
+<span class="n">southampton</span> <span class="o">=</span> <span class="n">df_t</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;embarked == &quot;S&quot;&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Total de passageiros que embarcaram em Cherboorg: </span><span class="si">{0}</span><span class="s2"> passageiros&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">cherboorg</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Total de passageiros que embarcaram em Queenstown: </span><span class="si">{0}</span><span class="s2"> passageiros&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">queenstown</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Total de passageiros que embarcaram em Southampton: </span><span class="si">{0}</span><span class="s2"> passageiros&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">southampton</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
 </pre></div>
 
 </div>
@@ -13128,43 +13314,21 @@ Total de sobreviventes idosos (acima de 50 anos): 22 sobreviventes
 <div class="prompt"></div>
 
 
-
-
-<div class="output_png output_subarea ">
-<img src="data:image/png;base64,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
-"
->
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Total de passageiros que embarcaram em Cherboorg: 168 passageiros
+Total de passageiros que embarcaram em Queenstown: 77 passageiros
+Total de passageiros que embarcaram em Southampton: 644 passageiros
+</pre>
 </div>
-
 </div>
 
 </div>
 </div>
 
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Conclusão</strong> - Chegamos a conclusão que o grupo de jovens (idade entre 18 e 30 anos) teve uma taxa de sobrevivencia de 45,9%, sendo a faixa etária com melhor taxa de sobrevivência.</p>
-<ul><li>Adultos (idade entre 31 e 50 anos) - 29,8%</li>
-<li>Crianças (abaixo de 18 anos) - 17,8% </li>
-<li>Idosos (acima de 50 anos) - 6,4%</li></ul>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Qual porto de embarque teve mais sobreviventes? </strong></p>
-
-</div>
-</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[55]:</div>
+<div class="prompt input_prompt">In&nbsp;[27]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Achando a quantidade de sobreviventes por porto de embarque</span>
@@ -13204,7 +13368,7 @@ Total de sobreviventes que embarcaram em Southampton: 217 sobreviventes
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[73]:</div>
+<div class="prompt input_prompt">In&nbsp;[28]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">labels</span> <span class="o">=</span> <span class="s1">&#39;Cherboorg&#39;</span><span class="p">,</span> <span class="s1">&#39;Queenstown&#39;</span><span class="p">,</span> <span class="s1">&#39;Southampton&#39;</span>
@@ -13248,8 +13412,17 @@ Total de sobreviventes que embarcaram em Southampton: 217 sobreviventes
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Conclusão</strong> - Tiveram mais sobreviventes que embarcaram do porto de Southampton. (Lembrando que nessa analise não foi considerado as pessoas que não tinham os seus portos de embarques registrados)</p>
-
+<p><h1>Conclusão</h1></p>
+<p><h2>Foram 342 sobreviventes (38,4%)</h2></p>
+<p>Analisando os dados podemos perceber que as mulheres foram privilegiadas ao embarcarem nos botes salva-vidas</p>
+    <ul style="list-style: none;">
+    <li><strong>Dos 342 sobreviventes 233 eram do sexo feminino.</strong></li>
+    <li><strong>Desses sobreviventes 39% estavam na 1ª Classe, 25% na 2ª Classe e 34% na 3ª Classe</strong></li>
+    <li><strong>A média de idade dos passageiros eram de pessoas jovens (Mulheres - media de 28 anos e Homens - media de 30 anos), por isso a maior parte dos sobreviventes estavam na faixa etária entre 18 e 30 anos, um total de 45% dos sobreviventes</strong></li>
+    <li><strong>A maior parte dos passageiros que sobreviveram embarcaram no porto de Southampton (um total de 217 sobreviventes), de onde também embarcaram grande parte dos passageiros (um total de 644 passageiros)</strong></li>
+    </ul>
+    <p><i>Outra curiosidade que podemos observar é que dos sobreviventes somente 6% eram idosos e que as pessoas que estavam na 3ª 
+    classe teve a menor diferença entre a taxa de sobreviventes entre os sexos (masculino / feminino) dos 119 sobreviventes, 47 eram do sexo masculino e 72 do sexo feminino</i></p>
 </div>
 </div>
 </div>
@@ -13257,17 +13430,16 @@ Total de sobreviventes que embarcaram em Southampton: 217 sobreviventes
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><h1>Conclusão Final</h1></p>
-<p><h2>Foram 342 sobreviventes (38,4%)</h2></p>
-<p>Podemos concluir que as principais caracteristicas das pessoas que conseguiram se salvar no acidente são:</p>
-    <ul style="list-style: none;">
-    <li><strong>Eram do sexo Feminino (233 sobreviventes)</strong></li>
-    <li><strong>Estavam na 1ª Classe (39,8% sobreviveram)</strong></li>
-    <li><strong>Eram jovens, entre 18 e 30 anos (45,9% sobreviveram)</strong></li>
-    <li><strong>Embarcaram no porto de Southampton (217 sobreviventes)</strong></li>
-    </ul>
-    <p><i>Outra curiosidade que podemos observar é que a taxa de sobrevivência dos idosos foi baixa e que as pessoas que estavam na 3ª 
-    classe tiveram uma taxa alta de sobrevivência <strong>(34,8%)</strong> e também teve menor diferença entre a taxa de sobreviventes entre os sexos (masculino / feminino)</i></p>
+<p><h1>Limitações</h1></p>
+<p>Fatores limitantes que foram observados para análise é que algumas variaveis possuiam valores nulos para alguns passageiros.
+Estas variaveis foram "Age", "Cabin" e "Embarked" </p><ul>
+    <li> Medida tomada: </li>
+    <ol><ul>
+        <ol><i>- Age: Os valores faltantes destas característica foram preenchidas com base na idade média dos passageiros</i></ol>
+        <ol><i>- Cabin: Como esta característica não foi considerada na fase de análise optou-se por não alterá-la</i></ol>
+        <ol><i>- Embarked: Como eram somente dois passageiros sem esse valor, optou-se por incluir um novo valor "N"= sem porto, porém esses dois passageiros, não foram considerados, na análise dessa variável, devido a não ser um peso muito grande para análise da característica</i></ol>
+    </ul></ol>
+</ul>
 </div>
 </div>
 </div>
